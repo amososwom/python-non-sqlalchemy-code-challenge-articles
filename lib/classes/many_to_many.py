@@ -33,13 +33,12 @@ class Article:
         return self._title
     
     @title.setter
-    def title(self, new_title):
-        if not hasattr(self, 'title'):
-            self._title = ""
-        if isinstance(new_title, str) and (5 <= len(new_title) <= 50):
-            self._title = new_title
-        else:
-            raise ValueError("Title must be of type str and between 5 and 50 characters")
+    def title(self, title):
+        if not hasattr(self, "_title"):
+            if isinstance(title, str) and (5 <= len(title) <= 50):
+                self._title = title
+            else:
+                raise ValueError("Title must be of type str and between 5 and 50 characters")
 
 
 class Author:
