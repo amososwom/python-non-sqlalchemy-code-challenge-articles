@@ -81,11 +81,13 @@ class Magazine:
     def __init__(self, name, category):
         self.name = name
         self.category = category
+
         Magazine.all.append(self)
+
     
     @property
     def name(self):
-        return self._name
+        return self._name 
     
     @name.setter
     def name(self, name):
@@ -142,3 +144,17 @@ class Magazine:
             return max(magazines_with_articles, key=lambda magazine: len(magazine.articles()))
         else:
             return None
+        
+        
+magazine_1 = Magazine("Vogue", "Fashion")
+magazine_2 = Magazine("AD", "Architecture")
+
+# print(magazine_1)
+# print(magazine_2)
+
+alldata = Magazine.all
+
+for items in alldata:
+    print(items.name)
+
+print(len(alldata))
