@@ -51,10 +51,11 @@ class Author:
     
     @name.setter
     def name(self, name):
-        if isinstance(name, str) and name != "" and not hasattr(self, 'name'):
-            self._name = name
-        else:
-            raise ValueError("Name must be of type str and must not be empty")
+        if not hasattr(self, '_name'):
+            if isinstance(name, str) and name != "":
+                self._name = name
+            else:
+                raise ValueError("Name must be of type str and must not be empty")
 
     def articles(self):
         return [article for article in Article.all if article.author == self]
@@ -88,8 +89,9 @@ class Magazine:
     
     @name.setter
     def name(self, name):
-        if isinstance(name, str) and 2 <= len(name) <= 16:
-            self._name = name
+        if isinstance(name, str):
+            if 2 <= len(name) <= 16:
+                self._name = name
         else:
             raise ValueError("Name must be of type str and between 2 and 16 characters")
     
@@ -99,8 +101,9 @@ class Magazine:
     
     @category.setter
     def category(self, category):
-        if isinstance(category, str) and len(category) > 0:
-            self._category = category
+        if isinstance(category, str):
+            if len(category) > 0:
+                self._category = category
         else:
             raise ValueError("Category must be of type str and more than 0 characters")
 
