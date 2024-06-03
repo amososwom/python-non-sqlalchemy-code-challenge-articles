@@ -81,7 +81,6 @@ class Magazine:
     def __init__(self, name, category):
         self.name = name
         self.category = category
-
         Magazine.all.append(self)
 
     
@@ -90,13 +89,13 @@ class Magazine:
         return self._name 
     
     @name.setter
-    def name(self, name):
+    def name(self, name):   
         if isinstance(name, str):
             if 2 <= len(name) <= 16:
                 self._name = name
-        else:
-            raise ValueError("Name must be of type str and between 2 and 16 characters")
-    
+            else:
+                raise ValueError("Name must be of type str and between 2 and 16 characters")
+        
     @property
     def category(self):
         return self._category
@@ -106,6 +105,8 @@ class Magazine:
         if isinstance(category, str):
             if len(category) > 0:
                 self._category = category
+            else:
+                raise ValueError("Category must be of type str and more than 0 characters")
         else:
             raise ValueError("Category must be of type str and more than 0 characters")
 
